@@ -20,5 +20,8 @@
   "devDependencies": {
     "@stencil/dev-server": "latest",
     "@stencil/utils": "latest"
+  },
+  "engines": {
+    "node": ">=6.11.0"
   }
 }
