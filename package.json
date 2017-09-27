@@ -13,9 +13,9 @@
     "start:ssr": "sd concurrent \"stencil build --dev --watch\" \"node server.js\""
   },
   "dependencies": {
-    "@stencil/core": "0.0.5-10",
-    "@stencil/router": "0.0.7-5",
-    "express": "^4.15.4"
+    "@stencil/core": "next",
+    "@stencil/router": "latest",
+    "express": "^4.15.5"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
