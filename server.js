@@ -1,44 +1,20 @@
 const express = require('express');
-const { join } = require('path');
-const { createRenderer } = require('@stencil/core');
-const { readFile } = require('fs');
+const stencil = require('@stencil/core/server');
 
+// create the express app
 const app = express();
+
+// set which port express it will be using
 const port = 3030;
 
-const renderer = createRenderer({
-  rootDir: join(__dirname, './'),
-  buildDir: join(__dirname, './www/build/'),
-  namespace: 'app',
-  logLevel: 'debug'
-});
+// load the stencil config
+const config = stencil.loadConfig(__dirname);
 
-app.use('/build', express.static('www/build'));
+// serve-side render html pages
+app.use(stencil.ssrPathRegex, stencil.ssrMiddleware({ config }));
 
-app.get('/*', (req, res) => {
+// serve all static files from www directory
+app.use(express.static(config.wwwDir));
 
-  console.log(`serve: ${req.url}`);
-
-  const filePath = join(__dirname, 'www/index.html');
-
-  readFile(filePath, 'utf-8', (err, html) => {
-
-    if (err) {
-      console.error(err);
-      res.send(err);
-      return;
-    }
-
-    // Render the initial app content through Stencil
-    renderer.hydrateToString({
-      html,
-      req,
-      config: {}
-    }).then(results => {
-      res.send(results.html);
-    })
-  });
-
-});
-
-app.listen(port, () => console.log(`Server started at http://localhost:${ port }`));
+// start the server
+app.listen(port, () => config.logger.info(`server started at http://localhost:${ port }`));

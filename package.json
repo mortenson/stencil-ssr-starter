@@ -1,5 +1,5 @@
 {
-  "name": "stencil-starter-ssr",
+  "name": "stencil-ssr-starter",
   "version": "0.0.1",
   "private": true,
   "main": "server.js",
@@ -9,7 +9,6 @@
     "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
     "serve": "stencil-dev-server",
     "start": "npm run dev",
-    "prestart:ssr": "stencil build --dev",
     "start:ssr": "sd concurrent \"stencil build --dev --watch\" \"node server.js\""
   },
   "dependencies": {
