@@ -18,7 +18,9 @@
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
-    "@stencil/utils": "latest"
+    "@stencil/sass": "0.0.5",
+    "@stencil/utils": "latest",
+    "semver": "^5.5.0"
   },
   "engines": {
     "node": ">=6.11.0"

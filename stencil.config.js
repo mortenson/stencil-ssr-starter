@@ -1,10 +1,18 @@
-exports.config = {
-  bundles: [
-    { components: ['my-app', 'home-page', 'page-1', 'page-2'] }
+const sass = require('@stencil/sass');
+
+exports.config = {  
+  buildEs5: true,
+  namespace: 'stencil-ssr',
+  outputTargets: [    
+    {
+      type: 'www'
+    }
   ],
-  collections: [
-    { name: '@stencil/router' }
+  hashFileNames: false,
+  plugins: [
+    sass()
   ]
+
 };
 
 exports.devServer = {
