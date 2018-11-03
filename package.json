@@ -6,19 +6,21 @@
   "description": "Stencil starter with server-side rendering",
   "scripts": {
     "build": "stencil build",
-    "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
-    "serve": "stencil-dev-server",
-    "start": "npm run dev",
-    "start:ssr": "sd concurrent \"stencil build --dev --watch\" \"node server.js\""
+    "dev": "sd concurrent \"stencil build --dev --watch\" \"node server.js\"",
+    "prestart": "npm run build",
+    "start": "node server.js"
+
   },
   "dependencies": {
-    "@stencil/core": "next",
-    "@stencil/router": "latest",
-    "express": "^4.15.5"
+    "@stencil/core": "^0.15.2",
+    "@stencil/router": "^0.3.1",
+    "express": "^4.16.4",
+    "semver": "^5.6.0"
   },
   "devDependencies": {
-    "@stencil/dev-server": "latest",
-    "@stencil/utils": "latest"
+    "@stencil/dev-server": "0.0.18",
+    "@stencil/utils": "0.0.5",
+    "workbox-build": "3.4.1"
   },
   "engines": {
     "node": ">=6.11.0"
