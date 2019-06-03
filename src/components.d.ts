@@ -4,7 +4,9 @@
  * It contains typing information for all components that exist in this project.
  */
 
+
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
+
 
 export namespace Components {
   interface HomePage {}
@@ -14,9 +16,9 @@ export namespace Components {
 }
 
 declare global {
-  interface HTMLHomePageElement
-    extends Components.HomePage,
-      HTMLStencilElement {}
+
+
+  interface HTMLHomePageElement extends Components.HomePage, HTMLStencilElement {}
   var HTMLHomePageElement: {
     prototype: HTMLHomePageElement;
     new (): HTMLHomePageElement;
@@ -63,8 +65,11 @@ declare namespace LocalJSX {
 
 export { LocalJSX as JSX };
 
-declare module '@stencil/core' {
+
+declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
   }
 }
+
+
